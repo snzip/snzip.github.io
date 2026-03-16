@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI就业革命：2026-2035趋势报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 677px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .header .meta {
+            margin-top: 15px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlight-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin: 30px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .image-container {
+            margin: 25px 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .conclusion h2 {
+            color: #d35400;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .sources {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sources h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .sources a {
+            color: #667eea;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .export-btn {
+            display: block;
+            margin: 15px auto 0;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .export-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            table th, table td {
+                padding: 8px;
+            }
+        }
+
+        .key-point {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+            border-left: 2px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 16px;
+        }
+
+        .timeline-content {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>AI就业革命：2026-2035趋势报告</h1>
+            <div class="subtitle">Artificial Intelligence and the Future of Work</div>
+            <div class="meta">2026年3月16日 | 研究报告 - 公众号:AI观象录 - 宋子鹏</div>
+        </div>
+
+        <!-- Hero Image -->
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
+             alt="人工智能与未来工作" class="hero-image">
+
+        <!-- Section 1: Executive Summary -->
+        <div class="section">
+            <h2 class="section-title">一、报告摘要</h2>
+            <div class="content">
+                <p>过去两年，生成式人工智能（Generative AI）迅速进入商业应用阶段。OpenAI、Anthropic、Google、Meta等科技公司推出的大模型系统，使AI能够处理复杂语言、代码、数据分析以及部分决策任务。</p>
+
+                <p>这项技术正在引发自工业革命以来最大规模的就业结构变化。</p>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1.7亿</div>
+                        <div class="stat-label">新岗位将被创造（到2030年）</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">9200万</div>
+                        <div class="stat-label">岗位将消失（到2030年）</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7800万</div>
+                        <div class="stat-label">就业净增长</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">22%</div>
+                        <div class="stat-label">工作将被重新定义</div>
+                    </div>
+                </div>
+
+                <div class="key-point">
+                    <strong>数据来源：</strong>世界经济论坛《Future of Jobs Report 2025》，基于超过1,000家全球领先雇主企业的调研，涵盖超过1400万员工。
+                </div>
+
+                <p>AI对就业的影响主要体现在三个方面：</p>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li><strong>自动化重复性任务</strong>：取代高重复性、低创造性的工作内容</li>
+                    <li><strong>提升知识工作者效率</strong>：AI作为协作工具增强人类能力</li>
+                    <li><strong>创造全新技术岗位</strong>：AI开发、维护、应用相关岗位激增</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Chart 1: Job Creation vs Displacement -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图1：2030年全球就业市场预测（单位：百万）</div>
+                <canvas id="jobChart"></canvas>
+                <button class="export-btn" onclick="exportChart('jobChart', '图1-全球就业市场预测')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 2: AI Technology Background -->
+        <div class="section">
+            <h2 class="section-title">二、AI技术发展背景</h2>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=400&fit=crop"
+                     alt="AI技术发展">
+                <div class="image-caption">AI技术的快速发展正在重塑各行各业</div>
+            </div>
+
+            <h3 class="subsection-title">2.1 AI能力突破</h3>
+            <div class="content">
+                <p>AI能力突破主要来自三项技术进步：</p>
+
+                <div class="highlight-box">
+                    <h3>🤖 大语言模型（LLM）</h3>
+                    <p>例如：GPT-4、Claude、Gemini等模型能够完成文本生成、编程、数据分析、文档处理等复杂任务。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>⚡ 算力提升</h3>
+                    <p>AI训练算力过去十年增长超过10万倍，主要推动因素包括GPU、云计算、专用AI芯片的快速发展。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>📊 数据规模</h3>
+                    <p>互联网数据和企业数据为AI训练提供了巨大资源，数据质量与规模直接决定AI能力。</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">2.2 AI技术发展时间线</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2010年 - 机器学习崛起</div>
+                    <div class="timeline-content">机器学习算法开始在各领域应用</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016年 - 深度学习爆发</div>
+                    <div class="timeline-content">AlphaGo击败人类围棋冠军，深度学习受到广泛关注</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020年 - Transformer架构</div>
+                    <div class="timeline-content">GPT-3发布，展示出强大的语言理解和生成能力</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023年 - 生成式AI元年</div>
+                    <div class="timeline-content">ChatGPT爆发，AI进入大众应用阶段</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025年 - AI Agents</div>
+                    <div class="timeline-content">AI智能体开始独立执行复杂任务</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2030年 - 自主AI系统（预测）</div>
+                    <div class="timeline-content">AI系统具备高度自主决策能力</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Current Impact on Employment -->
+        <div class="section">
+            <h2 class="section-title">三、AI对就业市场的当前影响</h2>
+            <div class="content">
+                <p>AI对就业的影响已经开始显现。2024-2025年，全球科技行业因AI技术转型导致的大规模裁员引发广泛关注。</p>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">3.1 企业裁员与自动化</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>裁员人数</th>
+                            <th>原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Amazon</td>
+                            <td>14,000+</td>
+                            <td>自动化运营+AI投资</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft</td>
+                            <td>9,000</td>
+                            <td>AI效率提升+业务重组</td>
+                        </tr>
+                        <tr>
+                            <td>Salesforce</td>
+                            <td>4,000+</td>
+                            <td>AI客服自动化</td>
+                        </tr>
+                        <tr>
+                            <td>Intel</td>
+                            <td>15%员工</td>
+                            <td>AI转型+成本优化</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-point">
+                    <strong>重要数据：</strong>根据Challenger, Gray & Christmas报告，2024年约有12,700个工作岗位直接归因于AI，而到2025年，这一数字上升至约55,000个工作岗位。2025年科技行业裁员比2024年增长17%。
+                </div>
+
+                <p>这些岗位主要集中在客服、行政、数据处理等可被AI自动化的领域。</p>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">3.2 AI自动化潜力</h3>
+                <p>研究机构普遍认为，约<strong>45%的工作任务</strong>可以被AI自动化，但需要注意的是：AI通常替代的是<strong>任务（tasks）</strong>而不是<strong>职业（jobs）</strong>。</p>
+
+                <p>大多数职业由多项任务组成，AI可能自动化其中部分任务，但人类仍需要完成需要创造力、情感智力和复杂决策的任务。</p>
+            </div>
+        </div>
+
+        <!-- Chart 2: Task Automation -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图2：不同任务的AI自动化潜力</div>
+                <canvas id="taskAutomationChart"></canvas>
+                <button class="export-btn" onclick="exportChart('taskAutomationChart', '图2-AI自动化潜力')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 4: Industry Impact Analysis -->
+        <div class="section">
+            <h2 class="section-title">四、行业冲击分析</h2>
+            <div class="content">
+                <p>AI对不同行业的影响差异巨大。根据世界经济论坛和McKinsey的研究，我们整理了各行业的AI自动化风险。</p>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">4.1 高风险行业</h3>
+
+                <div class="highlight-box">
+                    <h3>📞 客服行业</h3>
+                    <p><strong>自动化风险：60%</strong></p>
+                    <p>AI客服已经能够自动回答80%以上的常见问题。典型应用包括Chatbot、AI客服中心等。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>📁 行政岗位</h3>
+                    <p><strong>自动化风险：55%</strong></p>
+                    <p>AI可以自动完成文档整理、会议记录、数据统计等重复性行政任务。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>💰 金融分析</h3>
+                    <p><strong>自动化风险：50%</strong></p>
+                    <p>AI可以进行数据分析、报告生成、市场预测等金融分析任务。</p>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">4.2 中等风险行业</h3>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>软件开发（40%风险）</strong>：AI编程工具改变开发模式，但架构设计和创新仍需人类</li>
+                    <li><strong>零售行业（35%风险）</strong>：自动化收银、库存管理，但客户服务和销售仍需人力</li>
+                </ul>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">4.3 低风险行业</h3>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>医疗行业（15%风险）</strong>：AI辅助诊断，但医生的情感关怀和复杂决策不可替代</li>
+                    <li><strong>建筑行业（10%风险）</strong>：大量体力劳动和现场操作，AI影响较小</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chart 3: Industry Risk -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图3：各行业AI自动化风险对比</div>
+                <canvas id="industryRiskChart"></canvas>
+                <button class="export-btn" onclick="exportChart('industryRiskChart', '图3-各行业AI自动化风险')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 5: Career Structure Changes -->
+        <div class="section">
+            <h2 class="section-title">五、职业结构变化</h2>
+            <div class="content">
+                <p>AI不会简单消灭职业，而是改变职业结构。软件工程是一个典型案例。</p>
+
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop"
+                         alt="程序员使用AI编程工具">
+                    <div class="image-caption">AI编程工具正在改变软件开发的方式</div>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">5.1 软件工程案例</h3>
+                <p>AI编程工具（GitHub Copilot、Cursor、Claude Code）已经改变开发模式：</p>
+
+                <div class="highlight-box">
+                    <h3>✅ AI最擅长的任务</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>代码生成与补全</li>
+                        <li>自动测试</li>
+                        <li>文档生成</li>
+                        <li>代码重构</li>
+                        <li>Bug修复建议</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>👤 人类优势领域</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>系统架构设计</li>
+                        <li>产品创新</li>
+                        <li>团队协作</li>
+                        <li>复杂决策</li>
+                        <li>需求理解</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">5.2 设计行业转型</h3>
+                <p>AI设计工具（Midjourney、Stable Diffusion、Adobe Firefly）使设计师的角色转变为"AI创意指导者"——设计师更多地负责创意方向、审美决策和客户沟通，而AI负责执行。</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Productivity Revolution -->
+        <div class="section">
+            <h2 class="section-title">六、AI带来的生产力革命</h2>
+            <div class="content">
+                <p>AI不仅改变就业，还极大提升生产效率。McKinsey估计，AI可能为全球经济带来<strong>$2.6-4.4万亿美元</strong>的价值。</p>
+
+                <div class="key-point">
+                    <strong>McKinsey 2025全球AI调研报告</strong>显示：78%的组织现在在至少一个业务职能中使用AI，比2024年的65%大幅提升。生成式AI的采用率从2024年的33%增长到2025年的48%。
+                </div>
+
+                <p>AI的价值主要体现在：</p>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>提升工作效率</strong>：自动化重复性任务，释放人类时间</li>
+                    <li><strong>提高质量</strong>：减少人为错误，提升输出质量</li>
+                    <li><strong>加速创新</strong>：快速原型设计和测试</li>
+                    <li><strong>降低成本</strong>：减少人力成本和运营成本</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chart 4: AI Economic Value -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图4：AI生产力价值来源分布</div>
+                <canvas id="productivityChart"></canvas>
+                <button class="export-btn" onclick="exportChart('productivityChart', '图4-AI生产力价值来源')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 7: New Careers -->
+        <div class="section">
+            <h2 class="section-title">七、新职业出现</h2>
+            <div class="content">
+                <p>AI革命也创造大量新岗位。根据WEF报告，到2030年将有1.7亿个新岗位被创造。</p>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">7.1 高增长岗位</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>职业</th>
+                            <th>需求增长</th>
+                            <th>主要技能要求</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI工程师</td>
+                            <td>80%</td>
+                            <td>机器学习、深度学习、编程</td>
+                        </tr>
+                        <tr>
+                            <td>数据科学家</td>
+                            <td>70%</td>
+                            <td>数据分析、统计学、Python</td>
+                        </tr>
+                        <tr>
+                            <td>AI产品经理</td>
+                            <td>60%</td>
+                            <td>产品管理、AI知识、商业洞察</td>
+                        </tr>
+                        <tr>
+                            <td>自动化专家</td>
+                            <td>50%</td>
+                            <td>流程优化、RPA、系统集成</td>
+                        </tr>
+                        <tr>
+                            <td>AI安全专家</td>
+                            <td>40%</td>
+                            <td>网络安全、AI伦理、合规</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-point">
+                    <strong>重要趋势：</strong>66%的雇主计划招聘具有特定AI技能的人才，而40%的雇主计划在AI可以自动化任务的领域减少员工。
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">7.2 技能需求变化</h3>
+                <p>未来关键技能包括：</p>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>AI工具使用</strong>：熟练使用各类AI工具提升工作效率</li>
+                    <li><strong>数据分析</strong>：从数据中提取洞察的能力</li>
+                    <li><strong>创新能力</strong>：AI无法替代的创造性思维</li>
+                    <li><strong>情感智力</strong>：人际沟通、同理心、领导力</li>
+                    <li><strong>终身学习</strong>：快速适应新技术的能力</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chart 5: Job Growth -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图5：AI相关岗位需求增长预测</div>
+                <canvas id="jobGrowthChart"></canvas>
+                <button class="export-btn" onclick="exportChart('jobGrowthChart', '图5-AI岗位需求增长')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 8: Regional Impact -->
+        <div class="section">
+            <h2 class="section-title">八、区域影响差异</h2>
+            <div class="content">
+                <p>不同国家AI影响不同。根据OECD和WEF的研究：</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>国家/地区</th>
+                            <th>自动化风险</th>
+                            <th>主要原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>美国</td>
+                            <td>40%</td>
+                            <td>服务业发达，知识经济为主</td>
+                        </tr>
+                        <tr>
+                            <td>欧洲</td>
+                            <td>36%</td>
+                            <td>强大的劳动保护和高技能工人比例</td>
+                        </tr>
+                        <tr>
+                            <td>中国</td>
+                            <td>48%</td>
+                            <td>制造业大国，快速推进AI应用</td>
+                        </tr>
+                        <tr>
+                            <td>印度</td>
+                            <td>52%</td>
+                            <td>大量外包服务和数据处理岗位</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-point">
+                    <strong>区域差异原因：</strong>发展中国家更多岗位属于制造业、外包服务、数据处理等AI自动化风险较高的领域，而发达国家更多从事创新、管理等AI难以替代的工作。
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: AI Startup Opportunities -->
+        <div class="section">
+            <h2 class="section-title">九、AI创业机会地图</h2>
+            <div class="content">
+                <p>AI就业变革带来大量创业机会。2024年AI投资超过500亿美元。</p>
+
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop"
+                         alt="AI创业">
+                    <div class="image-caption">AI创业机会遍地开花</div>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">9.1 AI产业结构</h3>
+                <div class="highlight-box" style="text-align: center; font-size: 18px; line-height: 2.5;">
+                    <strong>AI基础设施</strong> → <strong>AI平台</strong> → <strong>AI应用</strong> → <strong>行业解决方案</strong>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">9.2 重点创业方向</h3>
+
+                <div class="highlight-box">
+                    <h3>1️⃣ AI办公自动化</h3>
+                    <p>自动处理文档、邮件、数据等办公任务。市场规模大，需求明确。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>2️⃣ AI客服系统</h3>
+                    <p>企业客服自动化，降低成本，提升效率。市场成熟，竞争激烈。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>3️⃣ AI开发工具</h3>
+                    <p>提升开发效率的工具（如Copilot、AI IDE）。开发者付费意愿强。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>4️⃣ AI Agents</h3>
+                    <p>自动化任务执行，代表未来方向。技术门槛高，潜力巨大。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>5️⃣ 垂直行业AI解决方案</h3>
+                    <p>针对医疗、法律、金融等特定行业的AI应用。需要行业知识，壁垒高。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 10: Future Trends -->
+        <div class="section">
+            <h2 class="section-title">十、未来十年趋势（2026-2035）</h2>
+            <div class="content">
+                <p>未来十年就业将出现三大变化趋势：</p>
+
+                <div class="highlight-box">
+                    <h3>📊 1. 工作极化（Job Polarization）</h3>
+                    <p>就业结构将分化为两极：</p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>高技能AI岗位</strong>：AI工程师、数据科学家、AI产品经理等</li>
+                        <li><strong>低技能服务岗位</strong>：护理、餐饮、建筑等需要人际接触或体力的工作</li>
+                    </ul>
+                    <p><strong>中等技能岗位</strong>（如传统白领工作）将面临最大的AI替代风险。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>🎯 2. 技能升级（Skill Upgrading）</h3>
+                    <p>未来关键技能：</p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>AI工具使用</strong>：会使用AI的人 vs 不会使用AI的人</li>
+                        <li><strong>数据分析</strong>：数据驱动决策能力</li>
+                        <li><strong>创新能力</strong>：AI难以替代的创造性思维</li>
+                        <li><strong>情感智力</strong>：人际沟通、同理心、领导力</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>🤝 3. 人机协作（Human-AI Collaboration）</h3>
+                    <p>未来工作模式：<strong>Human + AI</strong>，而不是 <strong>Human vs AI</strong></p>
+                    <p>成功的关键是学会与AI协作，让AI放大人类能力，而不是被AI替代。</p>
+                </div>
+
+                <h3 style="color: #667eea; margin: 20px 0 15px;">10.1 AI采用率预测</h3>
+                <p>根据McKinsey的调研数据，AI在企业中的采用呈现快速增长趋势：</p>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>2024年</strong>：65%的组织使用生成式AI</li>
+                    <li><strong>2025年</strong>：78%的组织在至少一个业务职能中使用AI</li>
+                    <li><strong>2026-2030年</strong>：AI将成为企业标准配置</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chart 6: AI Adoption Trend -->
+        <div class="section">
+            <div class="chart-container">
+                <div class="chart-title">图6：企业AI采用率增长趋势</div>
+                <canvas id="adoptionTrendChart"></canvas>
+                <button class="export-btn" onclick="exportChart('adoptionTrendChart', '图6-企业AI采用率趋势')">
+                    📥 导出此图表
+                </button>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="conclusion">
+            <h2>十一、结论与展望</h2>
+            <div class="content">
+                <p>AI正在引发第三次就业革命。关键结论：</p>
+
+                <div class="stat-grid">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">工作任务将被自动化</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="stat-number">9200万</div>
+                        <div class="stat-label">岗位可能消失</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <div class="stat-number">1.7亿</div>
+                        <div class="stat-label">新岗位将被创造</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <div class="stat-number">+$4.4T</div>
+                        <div class="stat-label">全球经济价值</div>
+                    </div>
+                </div>
+
+                <div class="key-point" style="margin-top: 20px;">
+                    <strong>最终结论：</strong>AI不会消灭工作，但会改变工作方式。未来竞争将变成：<br><br>
+                    <strong style="font-size: 18px; color: #d35400;">会使用AI的人 vs 不会使用AI的人</strong>
+                </div>
+
+                <p style="margin-top: 20px;"><strong>应对建议：</strong></p>
+                <ol style="line-height: 2; margin-left: 20px;">
+                    <li><strong>拥抱AI工具</strong>：主动学习和使用AI工具提升工作效率</li>
+                    <li><strong>培养独特技能</strong>：专注于AI难以替代的创造力和情感智力</li>
+                    <li><strong>终身学习</strong>：持续更新技能，适应快速变化的技术环境</li>
+                    <li><strong>关注人机协作</strong>：学会与AI协作，让AI成为你的助手而非竞争对手</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <div class="sources">
+            <h3>📚 数据来源与参考资料</h3>
+            <p style="line-height: 2;">
+                1. <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank">World Economic Forum - Future of Jobs Report 2025</a><br>
+                2. <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank">McKinsey - The State of AI: Global Survey 2025</a><br>
+                3. <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank">Anthropic - Labor market impacts of AI research</a><br>
+                4. <a href="https://www.cnbc.com/2025/12/21/ai-job-cuts-amazon-microsoft-and-more-cite-ai-for-2025-layoffs.html" target="_blank">CNBC - AI job cuts report 2025</a><br>
+                5. Challenger, Gray & Christmas - Job Cut Report 2025<br>
+                6. OECD - Automation Risk by Industry Statistics<br>
+                7. Goldman Sachs - AI Economic Impact Research
+            </p>
+            <p style="margin-top: 15px; font-size: 11px; color: #999;">
+                本报告基于公开数据和研究报告编制，仅供参考。数据截至2026年3月。
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; padding: 20px; color: #999; font-size: 13px; border-top: 1px solid #eee;">
+            <p>© 公众号:AI观象录 - 2026 AI就业革命研究报告 | 数据驱动，洞察未来</p>
+        </div>
+    </div>
+
+    <script>
+        // 导出图表为PNG图片的函数
+        function exportChart(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+
+            // 创建一个临时canvas来设置白色背景
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+
+            // 填充白色背景
+            tempCtx.fillStyle = '#ffffff';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+            // 绘制原图表
+            tempCtx.drawImage(canvas, 0, 0);
+
+            // 导出为PNG
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = tempCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+
+        // Chart 1: Job Creation vs Displacement
+        const jobCtx = document.getElementById('jobChart').getContext('2d');
+        new Chart(jobCtx, {
+            type: 'bar',
+            data: {
+                labels: ['新岗位创造', '岗位消失', '净增长'],
+                datasets: [{
+                    label: '岗位数量（百万）',
+                    data: [170, 92, 78],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Task Automation
+        const taskCtx = document.getElementById('taskAutomationChart').getContext('2d');
+        new Chart(taskCtx, {
+            type: 'bar',
+            data: {
+                labels: ['数据录入', '客服回复', '文档处理', '编程辅助', '设计辅助', '医疗诊断'],
+                datasets: [{
+                    label: '自动化潜力',
+                    data: [90, 80, 70, 50, 40, 20],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Industry Risk
+        const industryCtx = document.getElementById('industryRiskChart').getContext('2d');
+        new Chart(industryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['客服行业', '行政岗位', '金融分析', '软件开发', '零售', '医疗', '建筑'],
+                datasets: [{
+                    label: '自动化风险',
+                    data: [60, 55, 50, 40, 35, 15, 10],
+                    backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 70,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 4: AI Economic Value
+        const productivityCtx = document.getElementById('productivityChart').getContext('2d');
+        new Chart(productivityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['软件开发', '客户服务', '营销', '运营', '产品研发'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: [
+                        'rgba(102, 126, 234, 0.8)',
+                        'rgba(118, 75, 162, 0.8)',
+                        'rgba(237, 100, 166, 0.8)',
+                        'rgba(248, 150, 113, 0.8)',
+                        'rgba(246, 200, 113, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(102, 126, 234, 1)',
+                        'rgba(118, 75, 162, 1)',
+                        'rgba(237, 100, 166, 1)',
+                        'rgba(248, 150, 113, 1)',
+                        'rgba(246, 200, 113, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Chart 5: Job Growth
+        const jobGrowthCtx = document.getElementById('jobGrowthChart').getContext('2d');
+        new Chart(jobGrowthCtx, {
+            type: 'bar',
+            data: {
+                labels: ['AI工程师', '数据科学家', 'AI产品经理', '自动化专家', 'AI安全专家'],
+                datasets: [{
+                    label: '需求增长率',
+                    data: [80, 70, 60, 50, 40],
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 6: AI Adoption Trend
+        const adoptionCtx = document.getElementById('adoptionTrendChart').getContext('2d');
+        new Chart(adoptionCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: '企业AI采用率',
+                    data: [50, 65, 78, 85, 90, 93, 95, 97],
+                    fill: true,
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 40,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
