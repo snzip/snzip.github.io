@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hans"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>企之蓝 - 用 AI Agent 重新定义业务效率</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#00677f",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#b6ebff",
+                        "on-primary-container": "#001f28",
+                        "secondary": "#545f71",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#d6e3ff",
+                        "on-secondary-container": "#111c2c",
+                        "surface": "#f8fafd",
+                        "on-surface": "#191c20",
+                        "surface-variant": "#dee3eb",
+                        "on-surface-variant": "#42474e",
+                        "outline": "#72777f",
+                        "outline-variant": "#c2c7cf",
+                        "primary-fixed-dim": "#00d2ff",
+                        "surface-container": "#f0f4f9",
+                        "surface-container-high": "#ebeff4",
+                        "surface-container-low": "#f3f6fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "PingFang SC", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'PingFang SC', sans-serif;
+            background-color: #f8fafd;
+            color: #191c20;
+            scroll-behavior: smooth;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 103, 127, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+        }
+        .architectural-grid {
+            background-image: linear-gradient(rgba(0, 103, 127, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 103, 127, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .snap-container {
+            scroll-snap-type: y proximity;
+        }
+        section {
+            scroll-snap-align: start;
+        }
+        .light-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
+<div class="flex justify-between items-center px-12 h-20 w-full max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent font-headline tracking-tight">企之蓝</div>
+<div class="hidden md:flex gap-8">
+<a class="text-primary border-b-2 border-primary pb-1 font-['Space_Grotesk'] tracking-tight transition-all duration-300" href="#vision">核心愿景</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-['Space_Grotesk'] tracking-tight" href="#architecture">技术架构</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-['Space_Grotesk'] tracking-tight" href="#team">核心团队</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-['Space_Grotesk'] tracking-tight" href="#use-cases">业务场景</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-['Space_Grotesk'] tracking-tight" href="#cases">应用案例</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-['Space_Grotesk'] tracking-tight" href="#roadmap">实施路径</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium hover:brightness-110 transition-all duration-300 scale-95 active:scale-90 shadow-md">
+                开始咨询
+            </button>
+</div>
+</nav>
+<div class="snap-container">
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center architectural-grid pt-20 overflow-hidden bg-[#f0f7ff]">
+<div class="light-orb -top-20 -left-20"></div>
+<div class="light-orb bottom-0 right-0" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);"></div>
+<div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+<div class="flex flex-col justify-center space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-headline tracking-widest uppercase">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Next-Gen AI Agency
+                    </div>
+<h1 class="text-5xl lg:text-7xl font-bold font-headline leading-tight text-slate-900">
+                        企之蓝（上海）<br/>
+<span class="text-primary">软件技术有限公司</span>
+</h1>
+<p class="text-2xl font-light text-slate-600 max-w-xl leading-relaxed">
+                        用 AI Agent 重新定义业务效率。整合 RAG 检索增强、自动化流水线与大语言模型，构建企业级智能执行层。
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<div class="flex items-center gap-3 px-6 py-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">call</span>
+<span class="text-lg font-headline text-slate-800">13482572003</span>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold shadow-xl shadow-primary/20 hover:translate-y-[-2px] transition-transform">
+                            预约产品演示
+                        </button>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="relative w-full aspect-square max-w-md">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="relative z-10 w-full h-full bg-white/40 p-1 rounded-3xl backdrop-blur-md border border-white/60 shadow-2xl overflow-hidden">
+<img class="w-full h-full object-cover rounded-2xl opacity-90 mix-blend-multiply" data-alt="Futuristic digital brain visualization with complex neural networks and glowing cyan light pulses in light space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPpT1Hsnw_KIZlOfFkJhQlcmpAQKjzJ2k1JG6Y2jd7wYGQz9JTGSjbjIPIratlXGPJgjVoWJ95VNPXXKqj-LzlugW2_qSVuFrA-axXbM_nrrs_JubKT-pFlAVm59BBl93AwqY5yC2ccPz8v2cmymKpsX1plg-UnvdgzQGY2Uj9VCE1NZbw6wal5JPfMinIn_3z_WCdpQEBEoa0muA6MLuLz9NXtLjEY7Qkrj2pEkXweEISucbtcjVC2SbWSraOXkmzQuTUNEBy_MFh"/>
+</div>
+<!-- Decorative HUD elements -->
+<div class="absolute top-0 right-0 p-4 glass-panel rounded-xl -translate-y-4 translate-x-4 shadow-lg">
+<div class="text-[10px] text-primary mb-1 uppercase font-headline font-bold">Processing Rate</div>
+<div class="text-xl font-bold text-slate-800">99.8%</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Vision & Positioning -->
+<section class="py-32 bg-white" id="vision">
+<div class="max-w-7xl mx-auto px-12">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="flex-1 space-y-8">
+<div class="space-y-4">
+<h2 class="text-sm font-headline text-primary tracking-[0.3em] uppercase font-bold">愿景与定位</h2>
+<h3 class="text-4xl font-bold font-headline text-slate-900">领先的 AI Agent 服务商</h3>
+</div>
+<p class="text-slate-600 text-lg leading-relaxed">
+                            企之蓝致力于为全球企业打造“数字员工”梯队。我们不仅仅是提供一个工具，而是深入业务场景，通过大模型中枢、长短期记忆管理、多维感知体系及工具链调用，实现业务流程从“人机协同”向“智能自主执行”的飞跃。
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 rounded-xl bg-surface-container-low border border-primary/10">
+<div class="text-3xl font-bold text-primary mb-1">100%</div>
+<div class="text-sm text-slate-600">源代码级交付能力</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-low border border-primary/10">
+<div class="text-3xl font-bold text-primary mb-1">24/7</div>
+<div class="text-sm text-slate-600">自主决策与执行</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="rounded-xl overflow-hidden glass-panel border border-primary/20 shadow-inner bg-white p-3">
+<img alt="企之蓝（上海）软件科技有限责任公司营业执照" class="w-full h-auto rounded-lg object-contain" src="./license.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem Statement -->
+<section class="py-32 bg-slate-50">
+<div class="max-w-7xl mx-auto px-12">
+<div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+<h2 class="text-4xl font-bold text-slate-900">为什么企业需要智能执行层？</h2>
+<p class="text-slate-600">传统业务模式正面临前所未有的效率瓶颈</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="p-8 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4 group hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">groups_3</span>
+<h4 class="text-xl font-bold text-slate-800">人力密集瓶颈</h4>
+<p class="text-sm text-slate-600 leading-relaxed">重复性劳动占据员工 70% 时间，难以释放创造力。</p>
+</div>
+<!-- Card 2 -->
+<div class="p-8 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4 group hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">dataset_linked</span>
+<h4 class="text-xl font-bold text-slate-800">系统孤岛林立</h4>
+<p class="text-sm text-slate-600 leading-relaxed">数据无法跨平台流转，业务流在不同系统间断裂。</p>
+</div>
+<!-- Card 3 -->
+<div class="p-8 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4 group hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">psychology_alt</span>
+<h4 class="text-xl font-bold text-slate-800">复杂知识流转</h4>
+<p class="text-sm text-slate-600 leading-relaxed">法律、财税等高门槛工作对人员依赖度极高，容错率低。</p>
+</div>
+<!-- Card 4 -->
+<div class="p-8 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4 group hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">hourglass_disabled</span>
+<h4 class="text-xl font-bold text-slate-800">高成本低响应</h4>
+<p class="text-sm text-slate-600 leading-relaxed">人工响应速度受限，运营成本随业务规模线性增长。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Agent Architecture -->
+<section class="py-32 bg-white relative overflow-hidden" id="architecture">
+<div class="max-w-7xl mx-auto px-12">
+<div class="mb-20">
+<h2 class="text-sm font-headline text-primary tracking-[0.3em] uppercase font-bold">技术架构</h2>
+<h3 class="text-4xl font-bold mt-4 text-slate-900">AI Agent 闭环操作系统</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-8 glass-panel rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">neurology</span>
+</div>
+<h4 class="text-lg font-bold mb-3 text-slate-800">Brain (大模型中枢)</h4>
+<p class="text-sm text-slate-600">基于 LLM 的意图识别、规划与反思，赋予 Agent 思考能力。</p>
+</div>
+<div class="p-8 glass-panel rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">visibility</span>
+</div>
+<h4 class="text-lg font-bold mb-3 text-slate-800">Perception (感知)</h4>
+<p class="text-sm text-slate-600">集成 RAG、视觉与多模态输入，深度理解业务语境。</p>
+</div>
+<div class="p-8 glass-panel rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">construction</span>
+</div>
+<h4 class="text-lg font-bold mb-3 text-slate-800">Action (行动)</h4>
+<p class="text-sm text-slate-600">通过 API、插件及 RPA 工具自动执行跨系统任务。</p>
+</div>
+<div class="p-8 glass-panel rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">sync</span>
+</div>
+<h4 class="text-lg font-bold mb-3 text-slate-800">Feedback (反馈)</h4>
+<p class="text-sm text-slate-600">持续迭代的闭环系统，从执行结果中学习与优化。</p>
+</div>
+</div>
+<div class="relative p-12">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-[80px]"></div>
+<div class="relative z-10 bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl aspect-square flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="text-xs font-headline text-slate-400 tracking-widest uppercase font-bold">System Architecture v2.4</div>
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div class="flex-1 flex items-center justify-center">
+<!-- Visual Loop Concept -->
+<div class="relative w-48 h-48 border-2 border-dashed border-primary/20 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+<div class="absolute top-0 -translate-y-1/2 bg-white px-3 py-1 text-[10px] text-primary border border-primary/30 rounded-full font-bold">BRAIN</div>
+<div class="absolute right-0 translate-x-1/2 bg-white px-3 py-1 text-[10px] text-primary border border-primary/30 rounded-full font-bold">PERCEPTION</div>
+<div class="absolute bottom-0 translate-y-1/2 bg-white px-3 py-1 text-[10px] text-primary border border-primary/30 rounded-full font-bold">ACTION</div>
+<div class="absolute left-0 -translate-x-1/2 bg-white px-3 py-1 text-[10px] text-primary border border-primary/30 rounded-full font-bold">FEEDBACK</div>
+</div>
+<div class="absolute text-center">
+<div class="text-3xl font-bold font-headline text-primary">CORE</div>
+<div class="text-[10px] text-slate-400 tracking-[0.2em] font-bold">AUTONOMOUS</div>
+</div>
+</div>
+<p class="text-xs text-slate-500 text-center italic">“实现从被动响应到主动预测的跨越式进步”</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology Strength -->
+<section class="py-32 bg-slate-50">
+<div class="max-w-7xl mx-auto px-12">
+<h2 class="text-4xl font-bold mb-16 text-center text-slate-900">核心优势</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-10 rounded-xl bg-white border border-slate-100 shadow-sm flex gap-8 items-start hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-4xl text-primary">layers</span>
+<div class="space-y-4">
+<h4 class="text-2xl font-bold text-slate-800">全栈技术架构</h4>
+<p class="text-slate-600">涵盖主流 LLM 接入、自研向量数据库优化及多 Agent 协同工作流设计。</p>
+</div>
+</div>
+<div class="p-10 rounded-xl bg-white border border-slate-100 shadow-sm flex gap-8 items-start hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-4xl text-primary">terminal</span>
+<div class="space-y-4">
+<h4 class="text-2xl font-bold text-slate-800">100% 源码交付</h4>
+<p class="text-slate-600">真正属于企业私有的数字资产，无第三方黑盒风险，支持离线部署。</p>
+</div>
+</div>
+<div class="p-10 rounded-xl bg-white border border-slate-100 shadow-sm flex gap-8 items-start hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-4xl text-primary">tune</span>
+<div class="space-y-4">
+<h4 class="text-2xl font-bold text-slate-800">深度业务定制</h4>
+<p class="text-slate-600">非模板化产品。我们基于贵司业务 SOP 零距离定制 Agent 的执行逻辑与记忆模型。</p>
+</div>
+</div>
+<div class="p-10 rounded-xl bg-white border border-slate-100 shadow-sm flex gap-8 items-start hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-4xl text-primary">speed</span>
+<div class="space-y-4">
+<h4 class="text-2xl font-bold text-slate-800">敏捷交付体系</h4>
+<p class="text-slate-600">标准化实施路径，最快 7 天即可完成核心功能原型，缩短价值实现周期。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Team -->
+<section class="py-32 bg-white" id="team">
+<div class="max-w-7xl mx-auto px-12">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-bold text-slate-900">核心团队</h2>
+<p class="text-slate-600 mt-4">汇聚顶级技术力量，确保项目商业价值与技术可行性</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Member 1 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-slate-100 group-hover:border-primary/30 transition-all shadow-md">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a male AI architect" src="song.png"/>
+</div>
+<h4 class="text-2xl font-bold mb-1 text-slate-900">AI方案解决专家</h4>
+<p class="text-primary text-sm font-headline mb-4 uppercase tracking-widest font-bold">Chief Architect</p>
+<p class="text-slate-600 text-sm px-6">20 年大规模分布式系统架构经验，主导核心业务平台建设，具备从0到1设计与落地AI驱动系统的能力。</p>
+</div>
+<!-- Member 2 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-slate-100 group-hover:border-primary/30 transition-all shadow-md">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a female AI engineer" src="xue.png"/>
+</div>
+<h4 class="text-2xl font-bold mb-1 text-slate-900">AI 算法工程师</h4>
+<p class="text-primary text-sm font-headline mb-4 uppercase tracking-widest font-bold">AI Lead Engineer</p>
+<p class="text-slate-600 text-sm px-6">深耕 NLP 与强化学习领域，精通 RAG 性能调优与大模型微调工程。</p>
+</div>
+<!-- Member 3 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-slate-100 group-hover:border-primary/30 transition-all shadow-md">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a male solution expert" src="qiao.jpg"/>
+</div>
+<h4 class="text-2xl font-bold mb-1 text-slate-900">AI应用开发专家</h4>
+<p class="text-primary text-sm font-headline mb-4 uppercase tracking-widest font-bold">Solution Expert</p>
+<p class="text-slate-600 text-sm px-6">深谙企业数字化转型痛点，擅长将业务需求精准转化为AI执行流。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="py-24 bg-slate-50" id="use-cases">
+<div class="max-w-7xl mx-auto px-12">
+<h2 class="text-4xl font-bold mb-8 text-slate-900">典型应用场景</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Scenario 1 -->
+<div class="group relative overflow-hidden rounded-3xl bg-white border border-slate-200 h-[340px] shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay" data-alt="Modern business sales meeting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARw4HynavIJX6Q1GQgypgGcyPL-WG_n_ZFcK9p3wpgQuhwNQdqrlNUicLp-TRvDi0mhs6kkkmoq8qZsgS9_o5MLIuIY0KNQLOTmkSlPoi_CoVWiMBinybP_PBgTGXjhvjbadFZMcv1oDgxxMDK-qdpRxUJ3CrV7foBJvq1SoWQFlAkeOX8OVOz3upEza3fGu_0PssYPUFtWEjrJ2Xdgoc2qb5wGDLwrX-6i8k3VWNAkzY6amteBNJSkyhIQxRPSgIDWD3nLdFKRRra"/>
+<div class="relative h-full p-6 flex flex-col justify-between bg-gradient-to-t from-white via-white/85 to-white/10">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/90 border border-primary/10 shadow-sm">
+<span class="material-symbols-outlined text-primary text-lg">support_agent</span>
+<span class="text-xs font-bold tracking-widest text-primary">SALES</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 text-slate-900">智能销售辅助</h4>
+<p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                Agent 实时监控商机，自动调取客户历史、分析竞品并生成个性化话术，协助销售团队快速响应。
+                            </p>
+<button class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                                了解详情 <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scenario 2 -->
+<div class="group relative overflow-hidden rounded-3xl bg-white border border-slate-200 h-[340px] shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay" data-alt="Legal review background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJn7T4eTyGBvZwWrH3QIdy-0hSN-XutLivM2gMI8xU01DMX_HInSyofkRxc3mrYbLtEuGTdd9zolyGhVX3pAS5GvOpDN7OeDQVHNMKqYMXxR2-z7Y-DGQ7U2SOArAqYbO42vuiKjVFabaEvAMN3-qyFBoatOiC0iEVvtvWnpxYjf1E-zn7yjai8kzcPAa0qz866ndS3mb37-sic4LhDBP5etfDWe-WUGk8fw8UThPAlJYRACBNCacJrYagRDUVubXHCl037nRu36qk"/>
+<div class="relative h-full p-6 flex flex-col justify-between bg-gradient-to-t from-white via-white/85 to-white/10">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/90 border border-primary/10 shadow-sm">
+<span class="material-symbols-outlined text-primary text-lg">gavel</span>
+<span class="text-xs font-bold tracking-widest text-primary">LEGAL</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 text-slate-900">自动化合同审查</h4>
+<p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                基于法律知识库的 RAG 检索，Agent 可秒级扫描合同风险，标记合规性缺陷并提出修订建议。
+                            </p>
+<button class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                                了解详情 <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scenario 3 -->
+<div class="group relative overflow-hidden rounded-3xl bg-white border border-slate-200 h-[340px] shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay" data-alt="High-tech research background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL7HFZgb-uEzaeXUcJ0ULOk96vNl8WPkGTUA3PglDV4BYeen9ztEha98m0G_tN4ayZQnKrNKcwV7nnlHYG_GivUoMdYfpMusMOY38HZ1pKc81pcWJoPmd_UE5mK4GQDldkTdq_rk9WRYPiSOeITf15moPHgsf-KTq1ynqESkxvixB2FteJsIunvo0k02axscwlkjMdAAKVTmjeiRE4CYu1hjJTzW2m9Al3Yqw33LLOXztkOxbvqbJukgB1a7bWpZc5y3FPnHDIiD5n"/>
+<div class="relative h-full p-6 flex flex-col justify-between bg-gradient-to-t from-white via-white/85 to-white/10">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/90 border border-primary/10 shadow-sm">
+<span class="material-symbols-outlined text-primary text-lg">shield_lock</span>
+<span class="text-xs font-bold tracking-widest text-primary">IP</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 text-slate-900">知识产权分析</h4>
+<p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                实时监测全球专利动态，别技术侵权风险，为研发决策保驾护航。
+                            </p>
+<button class="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                                了解详情 <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Workflow & Support -->
+<section class="py-32 bg-white" id="roadmap">
+<div class="max-w-7xl mx-auto px-12">
+<div class="flex flex-col md:flex-row gap-20">
+<div class="md:w-1/3 space-y-8">
+<h2 class="text-4xl font-bold leading-tight text-slate-900">从需求到上线<br/><span class="text-primary">仅需 4 步</span></h2>
+<p class="text-slate-600">我们采用敏捷迭代的工作流，确保每一个 Agent 都能完美适配您的业务逻辑。</p>
+<div class="p-6 rounded-xl bg-primary/5 border border-primary/20">
+<p class="text-primary font-bold">最终收益</p>
+<p class="text-sm mt-2 text-slate-700">将实施风险降至最低，平均提升 150% 的单一流程效率。</p>
+</div>
+</div>
+<div class="md:w-2/3 space-y-12 relative">
+<div class="absolute left-[27px] top-4 bottom-4 w-px bg-slate-200 hidden md:block"></div>
+<div class="flex gap-12 relative">
+<div class="z-10 w-14 h-14 rounded-full bg-white border-2 border-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="text-primary font-headline font-bold text-xl">01</span>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-2 text-slate-800">原型验证 (7天)</h4>
+<p class="text-slate-600 leading-relaxed">快速梳理业务场景，通过我们的加速框架在 7 天内产出可交互的 AI Agent 原型。</p>
+</div>
+</div>
+<div class="flex gap-12 relative">
+<div class="z-10 w-14 h-14 rounded-full bg-white border-2 border-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="text-primary font-headline font-bold text-xl">02</span>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-2 text-slate-800">敏捷开发</h4>
+<p class="text-slate-600 leading-relaxed">基于原型进行模块化开发，重点攻克 RAG 准确率与工具链 API 深度集成。</p>
+</div>
+</div>
+<div class="flex gap-12 relative">
+<div class="z-10 w-14 h-14 rounded-full bg-white border-2 border-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="text-primary font-headline font-bold text-xl">03</span>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-2 text-slate-800">私有部署</h4>
+<p class="text-slate-600 leading-relaxed">支持主流云环境及企业本地机房部署，确保数据不出域，满足金融级安全要求。</p>
+</div>
+</div>
+<div class="flex gap-12 relative">
+<div class="z-10 w-14 h-14 rounded-full bg-white border-2 border-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="text-primary font-headline font-bold text-xl">04</span>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-2 text-slate-800">运维支持</h4>
+<p class="text-slate-600 leading-relaxed">全生命周期监控与迭代优化，随着业务变化持续微调 Agent 决策逻辑。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-900 pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2 space-y-6">
+<div class="text-2xl font-bold text-white font-headline">企之蓝</div>
+<p class="text-slate-400 max-w-sm font-['PingFang_SC'] text-sm leading-relaxed">
+                        企之蓝（上海）软件技术有限公司，专注企业级 AI Agent 的研发与应用。我们通过技术重构效率，让每一家企业都拥有自己的数字化智能军团。
+                    </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined p-2 rounded-lg bg-slate-800 text-primary-fixed-dim">public</span>
+<span class="material-symbols-outlined p-2 rounded-lg bg-slate-800 text-primary-fixed-dim">mail</span>
+<span class="material-symbols-outlined p-2 rounded-lg bg-slate-800 text-primary-fixed-dim">forum</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="text-sm font-bold text-white uppercase tracking-widest">快速链接</div>
+<ul class="space-y-3 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#vision">核心愿景</a></li>
+<li><a class="hover:text-white transition-colors" href="#architecture">技术架构</a></li>
+<li><a class="hover:text-white transition-colors" href="#team">专家团队</a></li>
+<li><a class="hover:text-white transition-colors" href="#use-cases">业务场景</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<div class="text-sm font-bold text-white uppercase tracking-widest">联系我们</div>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim">call</span>
+                            13482572003
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim">location_on</span>
+                            中国 · 上海
+                        </li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+<p>© 2024 企之蓝（上海）软件技术有限公司. All Rights Reserved. 沪ICP备XXXXXXXX号</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">隐私政策</a>
+<a class="hover:text-white transition-colors" href="#">服务条款</a>
+<a class="hover:text-white transition-colors" href="#">加入我们</a>
+<a class="hover:text-white transition-colors" href="#">技术支持</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Fixed Action Button -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</button>
+</div>
+</body></html>
